@@ -5,7 +5,7 @@ layout: default
     {% if page.image %}
         <img src="{{ page.image }}" alt="{{ page.title }}" class="post-cover">
     {% endif %}
-    <div class="post-meta">{{ page.category }} • {{ page.date | date: "%d.%m.%Y" }}</div>
+    <div class="post-meta">{{ page.category | replace: 'Кафедра визуальных кодов', 'Проект визуальных кодов' | replace: 'Лаборатория фольклора и мифа', 'Проект фольклора и мифа' }} • {{ page.date | date: "%d.%m.%Y" }}</div>
     <h1 class="post-title">{{ page.title }}</h1>
     {% if page.excerpt %}
         <div class="post-lead">{{ page.excerpt }}</div>
