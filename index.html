@@ -80,7 +80,7 @@ title: Главная
             </div>
             <span class="dept-link">Смотреть работы →</span>
         </a>
-        <a href="#glossary" class="dept-card">
+        <a href="/glossary/" class="dept-card">
             <div>
                 <div class="dept-num">IV</div>
                 <h3>Глоссарий ИСОФ</h3>
@@ -96,10 +96,10 @@ title: Главная
     <div class="filter-header">
         <h2 style="font-family: var(--font-serif); font-size: 32px;">Свежие исследования</h2>
         <div class="filter-tabs">
-            <button class="tab-btn active" onclick="filterPosts('all', this)">Все материалы</button>
-            <button class="tab-btn" onclick="filterPosts('Кафедра визуальных кодов', this)">Визуальные коды</button>
-            <button class="tab-btn" onclick="filterPosts('Лаборатория фольклора и мифа', this)">Фольклор</button>
-            <button class="tab-btn" onclick="filterPosts('Архив архетипов', this)">Архетипы</button>
+            <button class="tab-btn active" data-filter="all" onclick="filterPosts('all')">Все материалы</button>
+            <button class="tab-btn" data-filter="Кафедра визуальных кодов" onclick="filterPosts('Кафедра визуальных кодов')">Визуальные коды</button>
+            <button class="tab-btn" data-filter="Лаборатория фольклора и мифа" onclick="filterPosts('Лаборатория фольклора и мифа')">Фольклор</button>
+            <button class="tab-btn" data-filter="Архив архетипов" onclick="filterPosts('Архив архетипов')">Архетипы</button>
         </div>
     </div>
 
@@ -131,7 +131,7 @@ title: Главная
         <p class="glossary-desc">
             Эстетический принцип японской культуры, обозначающий светлую грусть от осознания быстротечности и хрупкости всего прекрасного в мире. В аниме этот мотив чаще всего передается через кадры опадающих лепестков сакуры, уходящих поездов или последних дней летних каникул.
         </p>
-        <a href="#articles" class="glossary-link">Изучать материалы института →</a>
+        <a href="/glossary/" class="glossary-link">Открыть глоссарий →</a>
     </div>
 </section>
 
@@ -142,27 +142,16 @@ title: Главная
     <p>
         Институт семиотики образов и фольклора (ISOF) создан для тех, кто смотрит глубже поверхности кадра. Мы объединяем методы культурологии, религиоведения и визуальной антропологии, чтобы расшифровывать скрытые коды современной японской анимации.
     </p>
-    <a href="#articles" class="btn-dark">Перейти к архиву исследований</a>
+    <a href="#articles" class="btn-dark" onclick="filterPosts('all')">Перейти к архиву исследований</a>
 </section>
 
 <script>
-    function filterPosts(category, btnElement) {
-        const cards = document.querySelectorAll('.article-card');
-        cards.forEach(card => {
-            if (category === 'all' || card.dataset.category === category) {
-                card.style.display = 'flex';
-            } else {
-                card.style.display = 'none';
-            }
+    function filterPosts(category) {
+        document.querySelectorAll('.article-card').forEach(function (card) {
+            card.style.display = (category === 'all' || card.dataset.category === category) ? '' : 'none';
         });
-
-        document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.classList.remove('active');
-            if (btnElement && btn === btnElement) {
-                btn.classList.add('active');
-            } else if (!btnElement && btn.textContent.includes(category.split(' ')[0])) {
-                btn.classList.add('active');
-            }
+        document.querySelectorAll('.tab-btn').forEach(function (btn) {
+            btn.classList.toggle('active', btn.dataset.filter === category);
         });
     }
 </script>
