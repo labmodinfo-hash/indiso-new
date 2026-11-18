@@ -8,7 +8,7 @@
     {%- assign og_title = page.title -%}
     {%- if page.url == '/' or page.title == 'Главная' -%}{%- assign og_title = site.title -%}{%- endif -%}
     {%- assign og_desc = page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 200 -%}
-    {%- assign og_img = page.image | default: '/assets/images/og-cover.jpg' -%}
+    {%- assign og_img = page.image | default: '/assets/images/og-cover.jpg?v=2' -%}
     {%- unless og_img contains '://' -%}{%- assign og_img = og_img | prepend: site.url -%}{%- endunless -%}
     <meta name="description" content="{{ og_desc | escape }}">
     <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
@@ -126,6 +126,12 @@
         .hero p { text-shadow: 0 1px 8px rgba(0,0,0,.6); }
         .header-inner { padding-left: 20px; padding-right: 20px; }
         @media (max-width: 800px) { .hero { min-height: 380px; padding: 72px 24px 32px; border-radius: 16px; } }
+    
+        /* Обложка: небольшой квадрат справа в начале статьи, текст обтекает */
+        body .post-wrapper { display: flow-root; }
+        body .post-cover { float: right; width: 220px; height: 220px; aspect-ratio: 1 / 1; max-height: none; object-fit: cover; object-position: center 30%; margin: 4px 0 18px 32px; border-radius: 14px; box-shadow: 0 14px 30px -18px rgba(31,58,51,.6); }
+        body .post-content img { display: block; width: auto; height: auto; max-width: 100%; max-height: 440px; margin: 24px auto; object-fit: contain; }
+        @media (max-width: 800px) { body .post-cover { width: 120px; height: 120px; margin: 2px 0 12px 16px; border-radius: 10px; } }
     </style>
 </head>
 <body>
