@@ -52,14 +52,14 @@ title: Главная
     </p>
 </section>
 
-<!-- 2. НАВИГАЦИЯ ПО КАФЕДРАМ -->
+<!-- 2. ПРОЕКТЫ ИНСТИТУТА -->
 <section class="dept-section" id="departments">
-    <h2 style="font-family: var(--font-serif); font-size: 32px;">Структура института</h2>
+    <h2 style="font-family: var(--font-serif); font-size: 32px;">Проекты института</h2>
     <div class="dept-grid">
         <a href="#articles" class="dept-card" onclick="filterPosts('Кафедра визуальных кодов')">
             <div>
                 <div class="dept-num">I</div>
-                <h3>Кафедра визуальных кодов</h3>
+                <h3>Проект визуальных кодов</h3>
                 <p>Символика цвета, графические знаки эмоций (манпу), композиция кадра и язык тела.</p>
             </div>
             <span class="dept-link">Смотреть работы →</span>
@@ -67,7 +67,7 @@ title: Главная
         <a href="#articles" class="dept-card" onclick="filterPosts('Лаборатория фольклора и мифа')">
             <div>
                 <div class="dept-num">II</div>
-                <h3>Лаборатория фольклора и мифа</h3>
+                <h3>Проект фольклора и мифа</h3>
                 <p>Синтоистские ритуалы, буддийские мотивы, демонология ёкаев и городские легенды.</p>
             </div>
             <span class="dept-link">Смотреть работы →</span>
@@ -110,7 +110,7 @@ title: Главная
                 <a href="{{ post.url }}"><img src="{{ post.image }}" alt="{{ post.title }}"></a>
             {% endif %}
             <div class="article-body">
-                <span class="post-meta">{{ post.category }}</span>
+                <span class="post-meta">{{ post.category | replace: 'Кафедра визуальных кодов', 'Проект визуальных кодов' | replace: 'Лаборатория фольклора и мифа', 'Проект фольклора и мифа' }}</span>
                 <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
                 <p class="article-excerpt">{{ post.excerpt }}</p>
                 <div class="article-tags">{{ post.tags | join: " • " }}</div>
@@ -140,7 +140,7 @@ title: Главная
     <span class="post-meta">Манифест проекта</span>
     <h2>Аниме как сложная знаковая система</h2>
     <p>
-        Институт семиотики образов и фольклора (ISOF) создан для тех, кто смотрит глубже поверхности кадра. Мы объединяем методы культурологии, религиоведения и визуальной антропологии, чтобы расшифровывать скрытые коды современной японской анимации — без академического снобизма, но с опорой на научные труды.
+        Институт семиотики образов и фольклора (ISOF) создан для тех, кто смотрит глубже поверхности кадра. Мы объединяем методы культурологии, религиоведения и визуальной антропологии, чтобы расшифровывать скрытые коды современной японской анимации.
     </p>
     <a href="#articles" class="btn-dark">Перейти к архиву исследований</a>
 </section>
